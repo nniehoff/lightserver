@@ -1,0 +1,12 @@
+[Unit]
+Description=Raspberry PI Light Server for LEDs
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/lightserver/light_server.py
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+RestartPreventExitStatus=255
+Type=notify
+
